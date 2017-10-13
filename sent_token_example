@@ -1,0 +1,11 @@
+
+from nltk import PunktSentenceTokenizer,sent_tokenize
+sent_tokenizer = PunktSentenceTokenizer()
+
+
+myText = "Hello, my name is Pepe and I like to play tennis. It is one of my favourite things to do in the world. When I grow up" \
+         " I would like to be a famous tennis player. My mom thinks I have a good chance at achieving this and my coach thinks the same! " \
+         "He said once: Kid you're gonna go far. I really hope I can make my dream come true"
+
+tokenized = sent_tokenizer.tokenize(myText)
+tokenized2=sent_tokenize(myText)

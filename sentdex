@@ -1,0 +1,23 @@
+import nltk
+import matplotlib
+from nltk import PunktSentenceTokenizer
+sent_tokenizer = PunktSentenceTokenizer()
+myText = "Hello, my name is Pepe and I like to play tennis. It is one of my favourite things to do in the world. When I grow up" \
+         "I would like to be a famous tennis player. My mom thinks I have a good chance at achieving this and my coach thinks the same! " \
+         "He said once: Kid you're gonna go far. I really hope I can make my dream come true"
+tokenized = sent_tokenizer.tokenize(myText)
+
+def process_content():
+    for i in tokenized:
+        words = nltk.word_tokenize(i)
+        tagged = nltk.pos_tag(words)
+
+        chunkGram = r"""Chunk: {<RB.?>*<VB.?>*<NNP>+<NN>?}"""
+        #chunkGram = r""""Chunk: {<.*>+}
+        #                        }<VB.?|IN|DT|TO>+{"""
+        chunkParser = nltk.RegexpParser(chunkGram)
+        chunked = chunkParser.parse(tagged)
+        print(chunked)
+        #chunked.draw()
+
+process_content()
